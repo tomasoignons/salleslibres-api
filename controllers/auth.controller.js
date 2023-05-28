@@ -69,7 +69,13 @@ module.exports.signIn = async (req, res) => {
 
         const token = createToken(user._id)
         console.log(token, user._id)
-        res.cookie("jwt", token, {maxAge})
+        res.cookie("jwt", token, {
+            domain: '.salleslibresv2.netlify.app',
+            path: '/',
+            secure: true,
+            httpOnly: true,
+            maxAge : maxAge,
+        })
         res.status(200).json({user : user._id})
     }
     catch(err){
