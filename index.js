@@ -2,9 +2,9 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const fileUpload = require("express-fileupload")
-require("./config/db")
-require("dotenv").config({path : "./config/.env"})
 
+require("dotenv").config({path : "./config/.env"})
+require("./config/db")
 
 const {checkUser, requireAuth} = require("./middleware/auth.middleware")
 
