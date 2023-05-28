@@ -69,6 +69,7 @@ module.exports.signIn = async (req, res) => {
 
         const token = createToken(user._id)
         console.log(token, user._id)
+        res.setHeader('Set-Cookie', `jwt=${token}; Domain=.salleslibresv2.netlify.app; Path=/; Secure; HttpOnly`);
         res.cookie("jwt", token, {
             domain: '.salleslibresv2.netlify.app',
             path: '/',
