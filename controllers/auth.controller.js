@@ -76,7 +76,7 @@ module.exports.signIn = async (req, res) => {
             path: '/',
             secure: true,
             httpOnly: true,
-            sameSite : "None",
+            sameSite : "none",
         })
         res.status(200).json({user : user._id})
     }
