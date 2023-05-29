@@ -5,6 +5,7 @@ const { signUperrors, signInErrors } = require('../utils/error.utils')
 const Token = require("../models/token.model")
 const sendEmail = require("../utils/sendEmail")
 const crypto = require("crypto")
+const { NONAME } = require('dns')
 
 const maxAge = 3*24*60*60*1000
 const createToken = (id) => {
@@ -75,6 +76,7 @@ module.exports.signIn = async (req, res) => {
             path: '/',
             secure: true,
             httpOnly: true,
+            sameSite : "None",
         })
         res.status(200).json({user : user._id})
     }
