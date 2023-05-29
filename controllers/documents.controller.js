@@ -80,7 +80,6 @@ module.exports.uploaddocument = async (req, res) =>{
   let url_document = ""
 
   // await file.mv(`${__dirname}/uploads/${fileName}`)
-    .then(()=>{
       const url = `https://discord.com/api/v9/channels/${channelurl}/messages`;
       const tokenSecret = `${process.env.DISCORD_SECRET}`;
       // const filePath = `./controllers/uploads/${fileName}`;
@@ -125,12 +124,7 @@ module.exports.uploaddocument = async (req, res) =>{
         .catch((error) => {
           res.status(201).send({ message : "Une erreur a eu lieu en stockant le fichier. Vérifiez si le fichier fait moins de 8Mo, et réessayez dans quelques instants. Si cela se reproduit, contactez l'administrateur du site"});
         });
-     })
-
-
-  
-
-}
+     }
 
 
 module.exports.createdocument = async (req, res) => {
