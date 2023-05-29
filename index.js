@@ -19,7 +19,7 @@ const app = express();
 
 
 const corsOptions = {
-    origin : process.env.CLIENT_URL,
+    origin : [process.env.CLIENT_URL, process.env.CLIENT_URR_2],
     credentials : true,
     "allowedHeaders":["sessionId", "Content-Type"],
     "exposedHeaders" : ["sessionId"],
