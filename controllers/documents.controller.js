@@ -93,7 +93,7 @@ module.exports.uploaddocument = async (req, res) =>{
       const fileStream = fs.createReadStream(filePath);
       
       const formData = new FormData();
-      formData.append('file', fileStream, fileName);
+      formData.append('file', file, fileName);
       
       const payload = {
         content: '',
