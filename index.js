@@ -2,7 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const fileUpload = require("express-fileupload")
-const Cookiesession = require('cookkie-session');
+const Cookiesession = require('cookie-session');
 
 
 require("dotenv").config({path : "./config/.env"})
