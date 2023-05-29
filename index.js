@@ -2,7 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const fileUpload = require("express-fileupload")
-const session = require('express-session');
+const Cookiesession = require('cookkie-session');
 
 
 require("dotenv").config({path : "./config/.env"})
@@ -34,7 +34,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended :true}))
 app.use(cookieParser())
 app.use(
-    session({
+    Cookiesession({
       secret: process.env.TOKEN_SECRET,
       resave: false,
       saveUninitialized: false,
