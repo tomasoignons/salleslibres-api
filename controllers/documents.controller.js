@@ -79,18 +79,18 @@ module.exports.uploaddocument = async (req, res) =>{
   const fileName = file.name.replace(" ", "-")
   let url_document = ""
 
-  await file.mv(`${__dirname}/uploads/${fileName}`)
+  // await file.mv(`${__dirname}/uploads/${fileName}`)
     .then(()=>{
       const url = `https://discord.com/api/v9/channels/${channelurl}/messages`;
       const tokenSecret = `${process.env.DISCORD_SECRET}`;
-      const filePath = `./controllers/uploads/${fileName}`;
+      // const filePath = `./controllers/uploads/${fileName}`;
       
       const headers = {
         'authorization': tokenSecret,
         'Content-Type': 'multipart/form-data',
       };
       
-      const fileStream = fs.createReadStream(filePath);
+      // const fileStream = fs.createReadStream(filePath);
       
       const formData = new FormData();
       formData.append('file', file, fileName);
