@@ -2,6 +2,8 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const fileUpload = require("express-fileupload")
+const session = require('express-session');
+
 
 require("dotenv").config({path : "./config/.env"})
 require("./config/db")
@@ -31,15 +33,20 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended :true}))
 app.use(cookieParser())
-// app.use(cookieSession({
-//     name: 'session',
-//     keys: [process.env.TOKEN_SECRET],
-//     maxAge: 300000,
-//     secure: true, // Set to true if using HTTPS
-//     httpOnly: true, // Restrict access to the cookie only via HTTP(S)
-//     domain: 'salleslibresv2.netlify.com', // Set the correct domain for your deployment
-//     path: '/', // Set the correct path for your deployment
-//   }));
+app.use(
+    session({
+      secret: process.env.TOKEN_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: 300000,
+        secure: true, // Set to true if using HTTPS
+        httpOnly: true, // Restrict access to the cookie only via HTTP(S)
+        domain: 'salleslibresv2.netlify.app', // Set the correct domain for your deployment
+        path: '/', // Set the correct path for your deployment
+      },
+    })
+  );
   
 app.use(fileUpload())
 
