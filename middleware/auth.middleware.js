@@ -7,8 +7,8 @@ module.exports.checkUser = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
       if (err) {
-        res.locals.user = null;
-        // res.cookie("jwt", "", { maxAge: 1 });
+        // res.locals.user = null;
+        // // res.cookie("jwt", "", { maxAge: 1 });
         next();
       } else {
         let user = await UserModel.findById(decodedToken.id);
